@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import Editor from "./components/compiler/Element";
 function App() {
-  const [count, setCount] = useState(0)
+  const [html, setHtml] = useState("");
+  const [css, setCss] = useState("");
+  const [js, setJs] = useState("");
+  const [output, setOutput] = useState("");
+
+  useEffect(() => {
+    setOutput(`
+      <html>
+      <body>
+      ${html}
+      </body>
+      <style>
+      ${css}
+      </style>
+      <script>${js}</script>
+      </html>
+      
+      `);
+  }, [html,css,js]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <Navbar />
+      <div className="code-container">
+        <Editor
+          key={"html"}
+          language={"xml"}
+          title="HTML"
+          value={html}
+          onChange={setHtml}
+        />
+        <Editor
+          key={"css"}
+          language={"css"}
+          title={"css"}
+          value={css}
+          onChange={setCss}
+        />
+        <Editor
+          key={"js"}
+          language={"javascript"}
+          title={"js"}
+          value={js}
+          onChange={setJs}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="output-container">
+
+        <iframe srcDoc={output} title="output" sandbox="allow-scripts" width="100%" height="100%"/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

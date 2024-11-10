@@ -1,0 +1,21 @@
+.container{
+flex-grow: 1;
+width: 200px;
+border: 0.5px solid white;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    color: white;
+    padding: 10px 5px;
+}
+mize{
+    flex-shrink: 2;
+}
+button{
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+nav{
+    background-color: #272722;
+    color: white;
+    height: auto;
+    padding: 20px 30px;
+}
+
+@media (max-width:768px)
+{
+    nav{
+        padding: 30px 40px;
+        font-size: 20px;
+    }
+}
