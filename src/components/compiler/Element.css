@@ -10,8 +10,8 @@ border: 0.5px solid white;
     color: white;
     padding: 10px 5px;
 }
-mize{
-    flex-shrink: 2;
+.minimize{
+    flex-shrink: 1;
 }
 button{
     background: none;
